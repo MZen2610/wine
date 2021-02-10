@@ -3,7 +3,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 import datetime
 import pandas as pd
 
-# excel_data_df = pd.read_excel('wine.xlsx', sheet_name='Лист1', na_values=['N/A', 'NA'], keep_default_na=False)
+excel_data_df = pd.read_excel('wine.xlsx', sheet_name='Лист1', na_values=['N/A', 'NA'], keep_default_na=False)
 
 env = Environment(
     loader=FileSystemLoader('.'),
@@ -11,14 +11,14 @@ env = Environment(
 )
 
 wine_data = []
-# for index, row in excel_data_df.iterrows():
-#     context = {
-#         "name": row['Название'],
-#         "sort": row['Сорт'],
-#         "price": row['Цена'],
-#         "picture": row['Картинка']
-#     }
-#     wine_data.append(context)
+for index, row in excel_data_df.iterrows():
+     context = {
+         "name": row['Название'],
+         "sort": row['Сорт'],
+         "price": row['Цена'],
+         "picture": row['Картинка']
+     }
+     wine_data.append(context)
 
 year = {
     "year_title": datetime.datetime.now().year - 1920,
