@@ -4,7 +4,8 @@ import collections
 
 wine2_df = pd.read_excel('wine2.xlsx', sheet_name='Лист1', na_values=['N/A', 'NA'], keep_default_na=False)
 
-wine2_dict = {}
+# wine2_dict = {}
+wine2_dict = collections.defaultdict(list)
 
 for index, row in wine2_df.iterrows():
 
@@ -15,13 +16,15 @@ for index, row in wine2_df.iterrows():
         "Картинка": row['Картинка']
     }
 
-    if row['Категория'] in wine2_dict:
-        wine2_list = []
-        for item in wine2_dict[row['Категория']]:
-            wine2_list.append(item)
-        wine2_list.append(context)
-        wine2_dict[row['Категория']] = wine2_list
-    else:
-        wine2_dict[row['Категория']] = [context]
+    wine2_dict[row['Категория']].append(context)
+
+    # if row['Категория'] in wine2_dict:
+    #     wine2_list = []
+    #     for item in wine2_dict[row['Категория']]:
+    #         wine2_list.append(item)
+    #     wine2_list.append(context)
+    #     wine2_dict[row['Категория']] = wine2_list
+    # else:
+    #     wine2_dict[row['Категория']] = [context]
 
 pprint(wine2_dict)
