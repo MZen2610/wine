@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@MZen2610 
-MZen2610
-/
-wine
-forked from devmanorg/wine
-0
-043
-Code
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-wine/template.html
-@MZen2610
-MZen2610 teстирование pandas
-Latest commit d51bdd2 5 minutes ago
- History
- 1 contributor
-232 lines (185 sloc)  10.2 KB
- 
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -146,19 +115,26 @@ Latest commit d51bdd2 5 minutes ago
         </div>
         <div class="row">
 
-         {% for wine in wines %}
-          <div class="col-lg-4 mb-5 col-md-6">
-            <div class="wine_v_1 text-center pb-4 pt-5">
-              <img src="images/{{ wine.picture }}" alt="Image" class="img-fluid">
-              <div>
-                <h3 class="heading mt-3 mb-3 text-dark">{{ wine.name }}</h3>
-                <p>
-                  Сорт винограда - {{ wine.sort }}<br/>
-                  <span class="price">{{ wine.price }} р.</span>
-                </p>
+          {% for category in wines %}
+          <div class="col-12 section-title text-center mb-5">
+            <h2 class="d-block">{{ category }}</h2>
+          </div>
+
+            {% for wine in wines[category] %}
+            <div class="col-lg-4 mb-5 col-md-6">
+              <div class="wine_v_1 text-center pb-4 pt-5">
+                <img src="images/{{ wine.picture }}" alt="Image" class="img-fluid">
+                <div>
+                  <h3 class="heading mt-3 mb-3 text-dark">{{ wine.name }}</h3>
+                  <p>
+                    Сорт винограда - {{ wine.sort }}<br/>
+                    <span class="price">{{ wine.price }} р.</span>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+           {% endfor %}
+
          {% endfor %}
 
         </div>

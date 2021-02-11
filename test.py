@@ -10,10 +10,10 @@ wine2_dict = collections.defaultdict(list)
 for index, row in wine2_df.iterrows():
 
     context = {
-       "Название": row['Название'],
-        "Сорт": row['Сорт'],
-        "Цена": row['Цена'],
-        "Картинка": row['Картинка']
+       "name": row['Название'],
+        "sort": row['Сорт'],
+        "price": row['Цена'],
+        "picture": row['Картинка']
     }
 
     wine2_dict[row['Категория']].append(context)
@@ -27,4 +27,10 @@ for index, row in wine2_df.iterrows():
     # else:
     #     wine2_dict[row['Категория']] = [context]
 
-pprint(wine2_dict)
+# pprint(wine2_dict)
+for category in wine2_dict:
+    # print(wine2_dict[category])
+    for item in wine2_dict[category]:
+        pprint(item)
+
+
