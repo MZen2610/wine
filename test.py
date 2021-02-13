@@ -2,7 +2,8 @@ import pandas as pd
 from pprint import pprint
 import collections
 
-wine2_df = pd.read_excel('wine2.xlsx', sheet_name='Лист1', na_values=['N/A', 'NA'], keep_default_na=False)
+wine2_df = pd.read_excel('wine3.xlsx', sheet_name='Лист1', na_values=['N/A',
+                                                                      'NA'], keep_default_na=False)
 
 # wine2_dict = {}
 wine2_dict = collections.defaultdict(list)
@@ -13,7 +14,8 @@ for index, row in wine2_df.iterrows():
        "name": row['Название'],
         "sort": row['Сорт'],
         "price": row['Цена'],
-        "picture": row['Картинка']
+        "picture": row['Картинка'],
+        "action": row['Акция'],
     }
 
     wine2_dict[row['Категория']].append(context)
